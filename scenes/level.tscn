@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccwov3xq7a23l"]
+
+[ext_resource type="PackedScene" uid="uid://bpp0ftmgfq5j0" path="res://scenes/mesh_instance_3d.tscn" id="2_mx8sn"]
+[ext_resource type="PackedScene" uid="uid://dkcspyedbw1eu" path="res://scenes/player.tscn" id="2_w8frs"]
+[ext_resource type="PackedScene" uid="uid://lres5fiajsy4" path="res://scenes/collision_shape_3d.tscn" id="3_w8frs"]
+
+[sub_resource type="Environment" id="Environment_w7c3h"]
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.668198, 0.664722, 0.924984, 1)
+fog_sun_scatter = 0.75
+fog_height = 42.87
+fog_height_density = -0.055
+
+[node name="Main" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3453, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w7c3h")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" parent="." instance=ExtResource("2_mx8sn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.376989, 1.19242, -1.29436)
+
+[node name="Player" parent="." instance=ExtResource("2_w8frs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 4.48214, -14)
+
+[node name="MeshInstance3D2" parent="." instance=ExtResource("3_w8frs")]
+transform = Transform3D(1.31134e-07, -2.56336e-10, 1, 0.00195476, 0.999998, 0, -0.999998, 0.00195476, 1.31134e-07, -23.2111, 4.9245, -12.87)

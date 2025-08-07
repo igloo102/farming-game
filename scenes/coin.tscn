@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://x5tenh72oti4"]
+
+[ext_resource type="Script" uid="uid://bnbugx6p6k845" path="res://scenes/coin.gd" id="1_rwqht"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_w7c3h"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w8frs"]
+albedo_color = Color(1, 0.921569, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mx8sn"]
+radius = 0.25
+
+[node name="coin" type="Area3D" groups=["player"]]
+script = ExtResource("1_rwqht")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_w7c3h")
+surface_material_override/0 = SubResource("StandardMaterial3D_w8frs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_mx8sn")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

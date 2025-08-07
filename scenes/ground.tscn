@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=3 uid="uid://qhvtngcuk7hw"]
+
+[ext_resource type="PackedScene" uid="uid://bh6itunrtlqt7" path="res://scenes/ground_2.tscn" id="1_pybca"]
+[ext_resource type="PackedScene" uid="uid://gm2u2umxfq7k" path="res://scenes/ground3.tscn" id="2_mi8v4"]
+[ext_resource type="PackedScene" uid="uid://bggjiigue4cq5" path="res://scenes/ground4.tscn" id="3_lmksl"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lv0v5"]
+size = Vector2(20, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ylpw"]
+albedo_color = Color(0.417971, 0.478033, 0.605759, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yh8r4"]
+size = Vector3(20, 0.1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7ylpw"]
+size = Vector3(10, 5, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ylpw"]
+size = Vector3(10, 5, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pybca"]
+albedo_color = Color(0.301961, 1, 1, 1)
+
+[node name="Ground" type="StaticBody3D"]
+transform = Transform3D(0.979246, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.996269, 0, 0, 0, 1, 0, 0, 0, 1, 4.98819, 0.0859513, 0.033226)
+mesh = SubResource("PlaneMesh_lv0v5")
+surface_material_override/0 = SubResource("StandardMaterial3D_7ylpw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_yh8r4")
+
+[node name="Wall1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0431185, 2.31283, 4.85414)
+mesh = SubResource("BoxMesh_7ylpw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall1/StaticBody3D"]
+shape = SubResource("BoxShape3D_7ylpw")
+
+[node name="Wall2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0431185, 2.31283, -5.14586)
+mesh = SubResource("BoxMesh_7ylpw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2/StaticBody3D"]
+shape = SubResource("BoxShape3D_7ylpw")
+
+[node name="Wall3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.95688, 2.31283, -0.145863)
+mesh = SubResource("BoxMesh_7ylpw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall3/StaticBody3D"]
+shape = SubResource("BoxShape3D_7ylpw")
+
+[node name="Doorwallsides" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.44948e-08, 0, -1, 0, 1, 0, 0.331603, 0, -4.37114e-08, 4.98725, 2.34986, 3.22703)
+mesh = SubResource("BoxMesh_7ylpw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Doorwallsides"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doorwallsides/StaticBody3D"]
+shape = SubResource("BoxShape3D_7ylpw")
+
+[node name="Doorwallsides2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.48458e-08, 0, -0.998525, 0, 0.998525, 0, 0.339632, 0, -4.36469e-08, 4.94996, 2.35716, -3.40078)
+mesh = SubResource("BoxMesh_7ylpw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Doorwallsides2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doorwallsides2/StaticBody3D"]
+shape = SubResource("BoxShape3D_7ylpw")
+
+[node name="Door" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.55792e-08, 0, -1, 0, 1, 0, 0.356411, 0, -4.37114e-08, 4.92724, 2.33599, -0.125966)
+mesh = SubResource("BoxMesh_7ylpw")
+surface_material_override/0 = SubResource("StandardMaterial3D_pybca")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Door"]
+
+[node name="Node3D" parent="." instance=ExtResource("1_pybca")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.0589, -0.0550277, -0.207476)
+
+[node name="Node3D2" parent="." instance=ExtResource("2_mi8v4")]
+transform = Transform3D(1.02119, 0, 0, 0, 1, 0, 0, 0, 1, 9.95498, 0, 9.94575)
+
+[node name="Node3D3" parent="." instance=ExtResource("3_lmksl")]
+transform = Transform3D(-1.02119, 0, -8.74228e-08, 0, 1, 0, 8.92756e-08, 0, -1, 9.86291, -1.90735e-06, -10.0203)
